@@ -17,12 +17,12 @@
     </thead>
     <tbody>
       <tr v-for="contact in contacts">
-        <th>{ { contact.pk } }</th>
-        <th>{ { contact.first_name } }</th>
-        <td>{ { contact.last_name } }</td>
-        <td>{ { contact.email } } </td>
-        <td>{ { contact.phone } }</td>
-        <td>{ { contact.address } }</td>
+        <th>{{ contact.pk }}</th>
+        <th>{{ contact.first_name }}</th>
+        <td>{{ contact.last_name }}</td>
+        <td>{{ contact.email }} </td>
+        <td>{{ contact.phone }}</td>
+        <td>{{ contact.address }}</td>
         <td>
           <button class="btn btn-danger" @click="deleteContact(contact)"> X</button>
         </td>
@@ -35,29 +35,34 @@
 </template>
 
 <script>
-import {APIService} from '../APIService';
-const apiService = new APIService();
+  import {APIService} from '../APIService';
+  const apiService = new APIService();
 
-export default {
-name: 'ListContacts',
-components: {
-},
-data() {
-  return {
-    contacts: [],
-    numberOfContacts:0
-  };
-},
-methods: {
-  getContacts(){
-    apiService.getContacts().then((data) => {
-        this.contacts = data.data;
-        this.numberOfContacts= data.count;
-    });
+  export default {
+    name: 'ListContacts',
+    components: {
+    },
+    data() {
+      return {
+        contacts: [
+
+        ],
+        numberOfContacts:0
+      };
+    },
+    methods: {
+      getContacts(){
+        apiService.getContacts().then((data) => {
+            this.contacts = data;
+            this.numberOfContacts= data.count;
+        });
+      },
+      createContact() {
+
+      }
+    },
+    mounted() {
+      this.getContacts();
+    }
   }
-},
-mounted() {
-  this.getContacts();
-}
-}
 </script>
