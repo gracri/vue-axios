@@ -1,6 +1,8 @@
+/* eslint-disable */
+
 <template>
   <div>
-    <h1>Contacts ()</h1>
+    <h1>Contacts</h1>
     <table class="table table-bordered table-hover">
     <thead>
       <tr>
@@ -34,7 +36,6 @@
 
 <script>
 import {APIService} from '../APIService';
-const API_URL = 'http://localhost:8000';
 const apiService = new APIService();
 
 export default {
